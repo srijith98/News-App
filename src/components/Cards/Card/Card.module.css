@@ -1,0 +1,31 @@
+.Card {
+    border: 2px solid #cccccc;
+    padding: 20px 20px;
+    width: 400px;
+    height: auto;
+    box-sizing: border-box;
+    margin: 40px 30px;
+    box-shadow: 5px 10px #eeeeee;
+    display: inline-block;
+}
+
+.Card p {
+    text-align: justify;
+}
+
+.Card i {
+    float: right;
+    color: #192A56;
+}
+
+.Card i :hover {
+    color: #74B9FF;
+}
+
+.CardActions {
+    display: flex;
+}
+
+.CardActions i {
+    padding: 0 10px;
+}

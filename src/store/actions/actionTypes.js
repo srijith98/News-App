@@ -1,0 +1,6 @@
+export const FETCH_POSTS = 'FETCH_POSTS';
+export const FETCH_POST_CONTENT = 'FETCH_POST_CONTENT';
+
+export const LIKE_POST = 'LIKE_POST';
+export const DISLIKE_POST = 'DISLIKE_POST';
+export const BOOKMARK_POST = 'BOOKMARK_POST';

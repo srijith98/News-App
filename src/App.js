@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import Layout from './hoc/Layout/Layout';
+import {Route, Switch} from 'react-router-dom';
+import Home from './containers/Home/Home';
+import Post from './containers/Post/Post'
+import Bookmarks from './containers/Bookmarks/Bookmarks';
+import {connect} from 'react-redux';
+import * as actions from './store/actions/actions';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  componentDidMount() {
+    this.props.fetchPostsHandler();
+  }
+  
+  render() {
+    return (
+      <div className="App">
+        <Layout>
+          <Switch>
+            <Route path="/post" component={Post} />
+            <Route path="/bookmarks" component={Bookmarks} />
+            <Route path="/" exact component={Home} />
+          </Switch>
+        </Layout>
+      </div>
+    );
+  }
+
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchPostsHandler: () => dispatch(actions.initFetchPosts())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App);
