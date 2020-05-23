@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Layout from './hoc/Layout/Layout';
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, Redirect} from 'react-router-dom';
 import Home from './containers/Home/Home';
 import Post from './containers/Post/Post'
 import Bookmarks from './containers/Bookmarks/Bookmarks';
@@ -22,6 +22,7 @@ class App extends Component {
             <Route path="/post" component={Post} />
             <Route path="/bookmarks" component={Bookmarks} />
             <Route path="/" exact component={Home} />
+            <Redirect to="/" />
           </Switch>
         </Layout>
       </div>

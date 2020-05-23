@@ -1,12 +1,16 @@
 .Card {
     border: 2px solid #cccccc;
     padding: 20px 20px;
-    width: 400px;
+    width: 60%;
     height: auto;
     box-sizing: border-box;
     margin: 40px 30px;
     box-shadow: 5px 10px #eeeeee;
     display: inline-block;
+    color: #192A56;
+    border-radius: 5px;
+    background-color: #EAF0F1;
+    cursor: pointer;
 }
 
 .Card p {
@@ -18,14 +22,24 @@
     color: #192A56;
 }
 
-.Card i :hover {
-    color: #74B9FF;
+.Card i:hover,
+.Card i:active {
+    color: #99AAAB;
 }
 
 .CardActions {
     display: flex;
+    height: 15.45px;
 }
 
 .CardActions i {
     padding: 0 10px;
+}
+
+.CardActions p {
+    margin: 0;
+}
+
+i {
+    cursor: pointer;
 }

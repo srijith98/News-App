@@ -9,12 +9,16 @@ const card = props => {
         bookmarkClass = "fas fa-bookmark";
     }
 
+    const re = /[^.]+\./;
+    const result = props.description.match(re);
+    const description = result[0]
+    console.log(result)
     return (
         <div className={classes.Card} onClick={props.clicked}>
             <i className={bookmarkClass}></i>
             <h3>{props.title}</h3>
             <Image link={props.image} info={props.alt} />
-            <p>{props.description}</p>
+            <p>{description}</p>
             <div className={classes.CardActions}>
                 <i className="far fa-thumbs-up"></i>
                 <p>{props.likes}</p>

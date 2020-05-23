@@ -8,6 +8,12 @@ const fetchPosts = (posts) => {
     }
 }
 
+const fetchPostsFailed = () => {
+    return {
+        type: actionTypes.FETCH_POSTS_FAILED
+    }
+}
+
 export const initFetchPosts = () => {
     return dispatch => {
         axios.get('Posts.json')
@@ -17,30 +23,18 @@ export const initFetchPosts = () => {
             })
             .catch(err => {
                 console.log(err)
+                dispatch(fetchPostsFailed())
             })
     }
 }
 
-const fetchPostContent = (postContent, selectedPost) => {
+export const showPostContent = (selectedPost) => {
     return {
-        type: actionTypes.FETCH_POST_CONTENT,
-        postContent,
+        type: actionTypes.SHOW_POST_CONTENT,
         selectedPost
     }
 }
 
-export const initFetchPostContent = (postId) => {
-    return dispatch => {
-        axios.get(`Post contents/${postId}.json`)
-            .then(response => {
-                console.log(response.data)
-                dispatch(fetchPostContent(response.data, postId))
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }
-}
 
 export const likePost = (postId) => {
     return {

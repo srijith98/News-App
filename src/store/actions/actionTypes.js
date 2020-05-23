@@ -1,5 +1,7 @@
 export const FETCH_POSTS = 'FETCH_POSTS';
-export const FETCH_POST_CONTENT = 'FETCH_POST_CONTENT';
+export const FETCH_POSTS_FAILED = 'FETCH_POSTS_FAILED';
+
+export const SHOW_POST_CONTENT = 'SHOW_POST_CONTENT';
 
 export const LIKE_POST = 'LIKE_POST';
 export const DISLIKE_POST = 'DISLIKE_POST';

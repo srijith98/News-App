@@ -3,6 +3,8 @@ import Cards from '../../components/Cards/Cards';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import {connect} from 'react-redux';
 import * as actions from '../../store/actions/actions';
+import axios from '../../axios_posts';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 class Home extends Component {
 
@@ -21,13 +23,14 @@ class Home extends Component {
         } else {
             console.log("Card clicked");
             this.props.history.push("/post");
-            this.props.fetchPostContentHandler(postId);
+            this.props.showPostContentHandler(postId);
         }
     }
 
 
+
     render() {
-        let cards = <Spinner />
+        let cards = !this.props.error? <Spinner />: <p>Couldn't load posts!</p>
 
         if(this.props.posts) {
             cards = (<Cards cardClicked={(e, key) => this.showPostHandler(e, key)} posts={this.props.posts} />);
@@ -43,17 +46,18 @@ class Home extends Component {
 
 const mapStateToProps = state => {
     return {
-        posts: state.posts
+        posts: state.posts,
+        error: state.postsError
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchPostContentHandler: (postId) => dispatch(actions.initFetchPostContent(postId)),
+        showPostContentHandler: (postId) => dispatch(actions.showPostContent(postId)),
         likePost: (postId) => dispatch(actions.likePost(postId)),
         dislikePost: (postId) => dispatch(actions.dislikePost(postId)),
         bookmarkPost: (postId) => dispatch(actions.bookmarkPost(postId))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Home, axios));
