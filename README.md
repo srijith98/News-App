@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# News App
+
+A simple React-Redux app with cards containing various new topics and its description. It also contains various actions to like, dislike, bookmark and also to delete a particular post from further viewing.
 
 ## Available Scripts
 
