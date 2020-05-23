@@ -24,11 +24,9 @@ class Post extends Component {
 
     render() {
 
-        let fullPost = <Spinner />;
-        if(this.props.postId === null) {
-            fullPost = <Redirect to="/" />;
-        }
-        else {
+        let fullPost = <Redirect to="/" />;
+
+        if(this.props.postId) {
             let bookmarkClass = "far fa-bookmark";
             if(this.props.posts[this.props.postId].bookmark) {
                 bookmarkClass = "fas fa-bookmark";

@@ -4,6 +4,19 @@ const initialState = {
     posts : null,
     selectedPost: null,
     postsError: false,
+    bookmarks: []
+}
+
+const bookmarkHandler = (state, postId) => {
+    let bookmarks = [...state.bookmarks]
+    const index = bookmarks.indexOf(postId)
+    if(index !== -1) {
+        bookmarks.splice(index, 1)
+    } else {
+        bookmarks.push(postId);
+    }
+    
+    return bookmarks
 }
 
 const reducer = (state=initialState, action) => {
@@ -64,7 +77,8 @@ const reducer = (state=initialState, action) => {
                         ...state.posts[action.bookmarkedPost],
                         bookmark: !state.posts[action.bookmarkedPost].bookmark
                     }
-                }
+                },
+                bookmarks: bookmarkHandler(state, action.bookmarkedPost)
             }
 
         default : return state

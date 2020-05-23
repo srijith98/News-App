@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Card from '../../components/Cards/Card/Card';
+import Cards from '../../components/Cards/Cards';
 import * as actions from '../../store/actions/actions';
 import { Redirect } from 'react-router-dom';
 
@@ -24,22 +24,24 @@ class Bookmarks extends Component {
 
         let bookmarkedPosts = <Redirect to="/" />
         
-        if(this.props.posts) {
-            bookmarkedPosts = Object.keys(this.props.posts).map(postKey => {
-                return this.props.posts[postKey].bookmark? <Card key={postKey} title={this.props.posts[postKey].title} image={this.props.posts[postKey].image} alt={this.props.posts[postKey].imageInfo} description={this.props.posts[postKey].description} bookmark={this.props.posts[postKey].bookmark} likes={this.props.posts[postKey].likes} dislikes={this.props.posts[postKey].dislikes} clicked={(e) => this.showPostHandler(e, postKey)}  />: null
+        if(this.props.posts && this.props.bookmarks.length) {
+            let posts = {}
+
+            this.props.bookmarks.forEach(postId => {
+                posts = {
+                    ...posts,
+                    [postId]: this.props.posts[postId]
+                }
             });
+            bookmarkedPosts = (<Cards cardClicked={(e, key) => this.showPostHandler(e, key)} posts={posts} />);
+            
         }
 
-        let bookmarks = false
-        bookmarkedPosts.forEach(bookmarkedPost => {
-            if(bookmarkedPost !== null) {
-                bookmarks = true
-            } 
-        })
+        console.log(bookmarkedPosts)
 
         return(
             <div>
-                {bookmarks? bookmarkedPosts: <p>No bookmarks found!</p>}
+                {this.props.bookmarks.length? bookmarkedPosts: <p>No bookmarks found!</p>}
             </div>
         )
     }
@@ -47,7 +49,8 @@ class Bookmarks extends Component {
 
 const mapStateToProps = state => {
     return {
-        posts: state.posts
+        posts: state.posts,
+        bookmarks: state.bookmarks
     }
 }
 
