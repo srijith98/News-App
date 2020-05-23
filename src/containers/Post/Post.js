@@ -22,6 +22,10 @@ class Post extends Component {
         this.props.dislikePost(this.props.postId)
     }
 
+    deleteClickedHandler = () => {
+        this.props.deletePost(this.props.postId)
+    }
+
     render() {
 
         let fullPost = <Redirect to="/" />;
@@ -41,7 +45,9 @@ class Post extends Component {
                         <p>{this.props.posts[this.props.postId].likes}</p>
                         <i className="far fa-thumbs-down" onClick={this.dislikeClickedHandler}></i>
                         <p>{this.props.posts[this.props.postId].dislikes}</p>
+                        <i className="far fa-trash-alt" onClick={this.deleteClickedHandler}></i>
                     </div>
+                    
                     <p>{this.props.posts[this.props.postId].description}</p>
                 </Aux>
             );
@@ -67,7 +73,8 @@ const mapDispatchToProps = dispatch => {
     return {
         likePost: (postId) => dispatch(actions.likePost(postId)),
         dislikePost: (postId) => dispatch(actions.dislikePost(postId)),
-        bookmarkPost: (postId) => dispatch(actions.bookmarkPost(postId))
+        bookmarkPost: (postId) => dispatch(actions.bookmarkPost(postId)),
+        deletePost: (postId) => dispatch(actions.deletePost(postId))
     }
 }
 

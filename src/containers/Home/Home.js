@@ -20,6 +20,8 @@ class Home extends Component {
             this.props.dislikePost(postId);
         } else if(e.target.classList.contains("fa-bookmark")) {
             this.props.bookmarkPost(postId);
+        } else if(e.target.classList.contains("fa-trash-alt")) {
+            this.props.deletePost(postId);
         } else {
             console.log("Card clicked");
             this.props.history.push("/post");
@@ -56,7 +58,8 @@ const mapDispatchToProps = dispatch => {
         showPostContentHandler: (postId) => dispatch(actions.showPostContent(postId)),
         likePost: (postId) => dispatch(actions.likePost(postId)),
         dislikePost: (postId) => dispatch(actions.dislikePost(postId)),
-        bookmarkPost: (postId) => dispatch(actions.bookmarkPost(postId))
+        bookmarkPost: (postId) => dispatch(actions.bookmarkPost(postId)),
+        deletePost: (postId) => dispatch(actions.deletePost(postId))
     }
 }
 

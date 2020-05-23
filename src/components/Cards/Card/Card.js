@@ -12,7 +12,7 @@ const card = props => {
     const re = /[^.]+\./;
     const result = props.description.match(re);
     const description = result[0]
-    console.log(result)
+
     return (
         <div className={classes.Card} onClick={props.clicked}>
             <i className={bookmarkClass}></i>
@@ -24,7 +24,9 @@ const card = props => {
                 <p>{props.likes}</p>
                 <i className="far fa-thumbs-down"></i>
                 <p>{props.dislikes}</p>
+                <i className="far fa-trash-alt"></i>
             </div>
+            
         </div>
     );
 }

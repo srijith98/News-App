@@ -56,3 +56,10 @@ export const bookmarkPost = (postId) => {
         bookmarkedPost: postId
     }
 }
+
+export const deletePost = postId => {
+    return {
+        type: actionTypes.DELETE_POST,
+        deletedPost: postId
+    }
+}

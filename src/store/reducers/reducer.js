@@ -19,6 +19,15 @@ const bookmarkHandler = (state, postId) => {
     return bookmarks
 }
 
+const deleteFromBookmark = (state, postId) => {
+    let bookmarks = [...state.bookmarks]
+    const index = bookmarks.indexOf(postId)
+    if(index !== -1) {
+        bookmarks.splice(index, 1)
+    }
+    return bookmarks
+}
+
 const reducer = (state=initialState, action) => {
 
     switch(action.type) {
@@ -79,6 +88,17 @@ const reducer = (state=initialState, action) => {
                     }
                 },
                 bookmarks: bookmarkHandler(state, action.bookmarkedPost)
+            }
+
+        case actionTypes.DELETE_POST :
+            return {
+                ...state,
+                posts: {
+                    ...state.posts,
+                    [action.deletedPost]: null
+                },
+                selectedPost: null,
+                bookmarks: deleteFromBookmark(state, action.deletedPost)
             }
 
         default : return state

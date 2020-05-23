@@ -6,3 +6,4 @@ export const SHOW_POST_CONTENT = 'SHOW_POST_CONTENT';
 export const LIKE_POST = 'LIKE_POST';
 export const DISLIKE_POST = 'DISLIKE_POST';
 export const BOOKMARK_POST = 'BOOKMARK_POST';
+export const DELETE_POST = 'DELETE_POST';
