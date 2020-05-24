@@ -4,6 +4,10 @@ A simple React-Redux app with cards containing various new topics and its descri
 
 ## Available Scripts
 
+Before runnning the app, all the necessary packages need to be installed. The packages required are axios, react-router-dom, redux, react-redux and redux-thunk. These packages can be installed in the project directory by running the following command:
+
+### `npm install --save <package name>`
+
 In the project directory, you can run:
 
 ### `npm start`
