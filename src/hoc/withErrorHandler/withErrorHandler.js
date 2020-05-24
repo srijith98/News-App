@@ -9,7 +9,7 @@ const withErrorHandler = (WrappedComponent, axios) => {
             error: null
         };
 
-        componentWillMount() {
+        componentDidMount() {
             this.requestInterceptor = axios.interceptors.request.use(req => {
                 this.setState({error: null})
                 return req
@@ -23,7 +23,6 @@ const withErrorHandler = (WrappedComponent, axios) => {
         }
 
         componentWillUnmount() {
-            // console.log('componentWillUnmount', this.requestInterceptor, this.responseInterceptor);
             axios.interceptors.request.eject(this.requestInterceptor);
             axios.interceptors.request.eject(this.responseInterceptor);
         }

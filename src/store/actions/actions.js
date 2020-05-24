@@ -18,11 +18,9 @@ export const initFetchPosts = () => {
     return dispatch => {
         axios.get('Posts.json')
             .then(response => {
-                console.log(response.data)
                 dispatch(fetchPosts(response.data))
             })
             .catch(err => {
-                console.log(err)
                 dispatch(fetchPostsFailed())
             })
     }

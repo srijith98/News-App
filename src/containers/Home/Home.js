@@ -8,11 +8,6 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 class Home extends Component {
 
-
-    componentDidMount() {
-        
-    }
-
     showPostHandler = (e, postId) => {
         if(e.target.classList.contains("fa-thumbs-up")) {
             this.props.likePost(postId);
@@ -23,7 +18,6 @@ class Home extends Component {
         } else if(e.target.classList.contains("fa-trash-alt")) {
             this.props.deletePost(postId);
         } else {
-            console.log("Card clicked");
             this.props.history.push("/post");
             this.props.showPostContentHandler(postId);
         }

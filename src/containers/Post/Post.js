@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Spinner from '../../components/UI/Spinner/Spinner';
 import Aux from '../../hoc/Auxiliary/Auxiliary';
 import classes from './Post.module.css';
 import Image from '../../components/Image/Image';

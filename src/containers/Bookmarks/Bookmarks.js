@@ -39,8 +39,6 @@ class Bookmarks extends Component {
             
         }
 
-        console.log(bookmarkedPosts)
-
         return(
             <div>
                 {this.props.bookmarks.length? bookmarkedPosts: <p>No bookmarks found!</p>}
